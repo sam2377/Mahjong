@@ -105,8 +105,18 @@ def query(inhand_list) :
     parse_str = result_str.split(inhand)[1].split("</textarea>")[0].strip()
     
     print("inhand: " + inhand)
-    print(parse_str)
-    #print(type(parse_str))
+    #print(parse_str)
+    split_line = parse_str.split("\n")
+    for i in range(len(split_line)) :
+        mo_list = []
+        sub_split_line = split_line[i].split(" ")
+        result_da = sub_split_line[0].split("打")[1]
+        result_mo = sub_split_line[1].split("[")[1]
+        result_num = sub_split_line[2].split("枚")[0]
+        for j in range(int(len(result_mo)/2)) :
+            mo_list.append(result_mo[j*2:j*2+2])
+        print("result_da: " + result_da + ", result_mo: " + result_mo + ", result_num: " + result_num)
+        #print(mo_list)
 
     driver.close()
 
@@ -129,7 +139,7 @@ def numto34(num) :
     elif num >= 108 and num <= 135 :
         return math.floor((num-108)/4) + 30
 
-if __name__ == "__main__":
+def rand_once() :
     inhand_num = []
     inhand_num34 = []
     inhand_str = []
@@ -148,7 +158,8 @@ if __name__ == "__main__":
     print(inhand_num34)
     print(inhand_str)
     query(inhand_str)
-        
+    print()
+
+if __name__ == "__main__":
+    rand_once()
     
-
-
