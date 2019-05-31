@@ -103,8 +103,9 @@ def query(inhand_list) :
     result = soup.find("textarea")
     result_str = str(result)
     parse_str = result_str.split(inhand)[1].split("</textarea>")[0].strip()
-    
-    print("inhand: " + inhand)
+    print("\nInHand: " + inhand)
+    shan_ten =  soup.find(id="tehai").text       # str
+    print("\n" + shan_ten)
     #print(parse_str)
     split_line = parse_str.split("\n")
     for i in range(len(split_line)) :
@@ -115,8 +116,10 @@ def query(inhand_list) :
         result_num = sub_split_line[2].split("枚")[0]
         for j in range(int(len(result_mo)/2)) :
             mo_list.append(result_mo[j*2:j*2+2])
-        print("result_da: " + result_da + ", result_mo: " + result_mo + ", result_num: " + result_num)
+        print("打： " + result_da + ", 摸: " + result_mo + ", 數量: " + result_num)
         #print(mo_list)
+
+
 
     driver.close()
 
